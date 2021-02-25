@@ -1,11 +1,18 @@
 package com.dehaat.dehaatassignment.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Book {
 
+    @SerializedName("title")
     private String title;
+    @SerializedName("description")
     private String description;
+    @SerializedName("publisher")
     private String publisher;
+    @SerializedName("published_date")
     private String published_date;
+    @SerializedName("price")
     private Float price;
 
     public String getTitle() {
