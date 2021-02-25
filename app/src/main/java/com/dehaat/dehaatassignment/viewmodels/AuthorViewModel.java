@@ -4,10 +4,8 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.dehaat.dehaatassignment.model.Author;
-import com.dehaat.dehaatassignment.model.Book;
 import com.dehaat.dehaatassignment.repositories.AuthorRepository;
 
 import java.util.List;

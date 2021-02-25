@@ -31,9 +31,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        if(findViewById(R.id.container_author_books)!=null){
+            isTwoPane=true;
+        }
         rvAuthors=findViewById(R.id.rv_authors);
-        authorAdapter=new AuthorAdapter(this);
+        authorAdapter=new AuthorAdapter(this,isTwoPane);
         rvAuthors.setLayoutManager(new LinearLayoutManager(this));
         rvAuthors.setAdapter(authorAdapter);
         appRestClientService= AppRestClient.getInstance().getService();
@@ -45,9 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 authorAdapter.setmAuthors(authors);
             }
         });
-        if(findViewById(R.id.container_author_books)!=null){
-            isTwoPane=true;
-        }
+
 
         fetchAndSaveDataFromServer();
 

@@ -7,7 +7,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.dehaat.dehaatassignment.model.Author;
-import com.dehaat.dehaatassignment.model.Book;
 
 import java.util.List;
 
