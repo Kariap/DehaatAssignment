@@ -1,7 +1,7 @@
 package com.dehaat.dehaatassignment.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dehaat.dehaatassignment.R;
+import com.dehaat.dehaatassignment.activity.BooksByAuthor;
 import com.dehaat.dehaatassignment.model.Author;
 
 import java.util.ArrayList;
@@ -37,6 +38,15 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AuthorView
         Author author=mAuthors.get(position);
         holder.authorName.setText(author.getAuthor_name());
         holder.authorBio.setText(author.getAuthor_bio());
+        holder.clickAbleLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = holder.clickAbleLinearLayout.getContext();
+                Intent intent = new Intent(context, BooksByAuthor.class);
+                intent.putExtra("AuthorName",author.getAuthor_name());
+                context.startActivity(intent);
+            }
+        });
     }
 
     public void setmAuthors(List<Author> mAuthors) {
@@ -50,13 +60,14 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AuthorView
     }
 
     class AuthorViewHolder extends RecyclerView.ViewHolder{
+        final View clickAbleLinearLayout;
         final TextView authorName;
         final TextView authorBio;
         public AuthorViewHolder(@NonNull View itemView) {
             super(itemView);
+            clickAbleLinearLayout=itemView;
             authorName=itemView.findViewById(R.id.author_name);
             authorBio=itemView.findViewById(R.id.author_bio);
-
         }
     }
 }

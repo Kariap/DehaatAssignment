@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.dehaat.dehaatassignment.model.Author;
+import com.dehaat.dehaatassignment.model.Book;
 
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface AuthorDao {
 
     @Query("SELECT * FROM authors ORDER BY author_name ASC")
     LiveData<List<Author>> getAllAuthors();
+
+    @Query("SELECT * FROM authors WHERE author_name=:name")
+    LiveData<Author> getBooksByAuthor(String name);
 }

@@ -30,6 +30,7 @@ public class Author {
     @SerializedName("author_bio")
     private String author_bio;
 
+    @ColumnInfo(name = "books")
     @SerializedName("books")
     private List<Book> books;
 

@@ -10,9 +10,9 @@ import com.dehaat.dehaatassignment.R;
 import com.dehaat.dehaatassignment.adapter.AuthorAdapter;
 import com.dehaat.dehaatassignment.model.Author;
 import com.dehaat.dehaatassignment.model.ServerResponse;
-import com.dehaat.dehaatassignment.repositories.AuthorRepository;
 import com.dehaat.dehaatassignment.rest.AppRestClient;
 import com.dehaat.dehaatassignment.rest.AppRestClientService;
+import com.dehaat.dehaatassignment.viewmodels.AuthorViewModel;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvAuthors;
     private AuthorAdapter authorAdapter;
     private AppRestClientService appRestClientService;
-    private AuthorRepository authorRepository;
+    private AuthorViewModel authorViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
         rvAuthors.setAdapter(authorAdapter);
         appRestClientService= AppRestClient.getInstance().getService();
 
-        authorRepository=new AuthorRepository(getApplication());
-        authorRepository.getAllAuthors().observe(this, new Observer<List<Author>>() {
+        authorViewModel=new AuthorViewModel(getApplication());
+        authorViewModel.getAuthors().observe(this, new Observer<List<Author>>() {
             @Override
             public void onChanged(List<Author> authors) {
                 authorAdapter.setmAuthors(authors);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveData(List<Author> authors) {
-        authorRepository.insertAll(authors);
+        authorViewModel.insertAuthors(authors);
     }
 
 }
