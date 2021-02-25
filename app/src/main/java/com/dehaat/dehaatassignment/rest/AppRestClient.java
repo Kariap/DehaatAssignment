@@ -53,4 +53,7 @@ public class AppRestClient {
 
         appRestClientService = retrofit.create(AppRestClientService.class);
     }
+    public AppRestClientService getService(){
+        return appRestClientService;
+    }
 }
