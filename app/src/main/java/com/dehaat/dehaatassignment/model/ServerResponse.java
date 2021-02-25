@@ -7,13 +7,13 @@ import java.util.List;
 public class ServerResponse {
 
     @SerializedName("data")
-    List<AuthorResponse> authors;
+    List<Author> authors;
 
-    public List<AuthorResponse> getAuthors() {
+    public List<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<AuthorResponse> authors) {
+    public void setAuthors(List<Author> authors) {
         this.authors = authors;
     }
 }

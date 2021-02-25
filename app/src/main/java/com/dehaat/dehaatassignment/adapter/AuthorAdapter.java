@@ -1,33 +1,62 @@
 package com.dehaat.dehaatassignment.adapter;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dehaat.dehaatassignment.R;
+import com.dehaat.dehaatassignment.model.Author;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AuthorViewHolder>{
+
+    private List<Author> mAuthors=new ArrayList<>();
+    private Context context;
+    public AuthorAdapter(Context context) {
+        this.context=context;
+    }
 
     @NonNull
     @Override
     public AuthorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_author, parent, false);
+        return new AuthorViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AuthorViewHolder holder, int position) {
+        Author author=mAuthors.get(position);
+        holder.authorName.setText(author.getAuthor_name());
+        holder.authorBio.setText(author.getAuthor_bio());
+    }
 
+    public void setmAuthors(List<Author> mAuthors) {
+        this.mAuthors = mAuthors;
+        this.notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mAuthors.size();
     }
 
     class AuthorViewHolder extends RecyclerView.ViewHolder{
-
+        final TextView authorName;
+        final TextView authorBio;
         public AuthorViewHolder(@NonNull View itemView) {
             super(itemView);
+            authorName=itemView.findViewById(R.id.author_name);
+            authorBio=itemView.findViewById(R.id.author_bio);
+
         }
     }
 }

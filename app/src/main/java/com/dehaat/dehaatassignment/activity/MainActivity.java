@@ -1,23 +1,18 @@
 package com.dehaat.dehaatassignment.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-import android.util.Log;
 
 import com.dehaat.dehaatassignment.R;
 import com.dehaat.dehaatassignment.adapter.AuthorAdapter;
 import com.dehaat.dehaatassignment.model.Author;
-import com.dehaat.dehaatassignment.model.AuthorResponse;
-import com.dehaat.dehaatassignment.model.Book;
 import com.dehaat.dehaatassignment.model.ServerResponse;
+import com.dehaat.dehaatassignment.repositories.AuthorRepository;
 import com.dehaat.dehaatassignment.rest.AppRestClient;
 import com.dehaat.dehaatassignment.rest.AppRestClientService;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 
 import java.util.List;
 
@@ -31,17 +26,25 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvAuthors;
     private AuthorAdapter authorAdapter;
     private AppRestClientService appRestClientService;
+    private AuthorRepository authorRepository;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         rvAuthors=findViewById(R.id.rv_authors);
-        authorAdapter=new AuthorAdapter();
+        authorAdapter=new AuthorAdapter(this);
         rvAuthors.setLayoutManager(new LinearLayoutManager(this));
         rvAuthors.setAdapter(authorAdapter);
         appRestClientService= AppRestClient.getInstance().getService();
 
+        authorRepository=new AuthorRepository(getApplication());
+        authorRepository.getAllAuthors().observe(this, new Observer<List<Author>>() {
+            @Override
+            public void onChanged(List<Author> authors) {
+                authorAdapter.setmAuthors(authors);
+            }
+        });
         if(findViewById(R.id.container_author_books)!=null){
             isTwoPane=true;
         }
@@ -54,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
         appRestClientService.getListOfAuthors().enqueue(new Callback<ServerResponse>() {
             @Override
             public void onResponse(Call<ServerResponse> call, Response<ServerResponse> response) {
-                List<AuthorResponse> authorResponseList=response.body().getAuthors();
-                parseAndSaveData(authorResponseList);
+                saveData(response.body().getAuthors());
             }
 
             @Override
@@ -65,17 +67,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void parseAndSaveData(List<AuthorResponse> authorResponseList) {
-        for(AuthorResponse authorResponse:authorResponseList){
-            String authorName=authorResponse.getAuthorName();
-            String authorBio=authorResponse.getAuthorBio();
-            List<Book> books=authorResponse.getBooks();
-            Author author=new Author(authorName,authorBio);
-            //insert author
-            for(Book book:books){
-                //insert Book
-            }
-        }
+    private void saveData(List<Author> authors) {
+        authorRepository.insertAll(authors);
     }
 
 }
