@@ -1,11 +1,15 @@
 package com.dehaat.dehaatassignment.adapter;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +20,7 @@ import com.dehaat.dehaatassignment.R;
 import com.dehaat.dehaatassignment.activity.BooksByAuthor;
 import com.dehaat.dehaatassignment.activity.MainActivity;
 import com.dehaat.dehaatassignment.model.Author;
+import com.skyhope.showmoretextview.ShowMoreTextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +48,7 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AuthorView
         Author author=mAuthors.get(position);
         String authorName=author.getAuthor_name();
         holder.authorName.setText(author.getAuthor_name());
+
         holder.authorBio.setText(author.getAuthor_bio());
         holder.clickAbleLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +69,37 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AuthorView
                 }
             }
         });
+        TextView authorBio=holder.authorBio;
+        Button btnSeeMore=holder.btnSeeMore;
+
+        authorBio.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                btnSeeMore.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                if(authorBio.getLineCount()<=3){
+                    holder.expandable=false;
+                    btnSeeMore.setVisibility(View.GONE);
+                }else{
+                    holder.expandable=true;
+                    authorBio.setLines(3);
+                }
+            }
+        });
+        btnSeeMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.expandable) {
+                    holder.expandable = false;
+                    authorBio.setMaxLines(40);
+                    btnSeeMore.setText("Collapse");
+                }else{
+                    holder.expandable = true;
+                    authorBio.setMaxLines(3);
+                    btnSeeMore.setText("Read more");
+                }
+            }
+        });
+
     }
 
     public void setmAuthors(List<Author> mAuthors) {
@@ -79,11 +116,14 @@ public class AuthorAdapter extends RecyclerView.Adapter<AuthorAdapter.AuthorView
         final View clickAbleLinearLayout;
         final TextView authorName;
         final TextView authorBio;
+        final Button btnSeeMore;
+        private boolean expandable;
         public AuthorViewHolder(@NonNull View itemView) {
             super(itemView);
             clickAbleLinearLayout=itemView;
             authorName=itemView.findViewById(R.id.author_name);
             authorBio=itemView.findViewById(R.id.author_bio);
+            btnSeeMore=itemView.findViewById(R.id.read_more);
         }
     }
 }

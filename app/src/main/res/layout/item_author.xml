@@ -23,7 +23,7 @@
         </ImageView>
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
                 tools:text="William"
@@ -34,12 +34,21 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/author_name"/>
             <TextView
+                android:layout_marginBottom="4dp"
                 app:fontFamily="sans-serif"
                 android:textSize="20sp"
                 tools:text="he was a great author with from a poor background leofoorg erjgjjjer jerjjjgre jerjgjjjer gjjergjjejrg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/author_bio"/>
+            <Button
+                android:background="#f0f0f0"
+                android:textAllCaps="false"
+                android:text="Read more"
+                android:layout_gravity="right"
+                android:id="@+id/read_more"
+                android:layout_width="100dp"
+                android:layout_height="30dp"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
