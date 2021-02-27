@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+//This class is used to easily parse and get data from server into java object.
 public class ServerResponse {
 
     @SerializedName("data")

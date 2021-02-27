@@ -10,6 +10,7 @@ import com.dehaat.dehaatassignment.repositories.AuthorRepository;
 
 import java.util.List;
 
+//ViewModel used for books and authors.
 public class AuthorViewModel extends AndroidViewModel {
     private AuthorRepository authorRepository;
     private final LiveData<List<Author>> authors;
@@ -29,7 +30,6 @@ public class AuthorViewModel extends AndroidViewModel {
     }
 
     public LiveData<Author> getBooksByAuthor(String authorName){
-        LiveData<Author> books = authorRepository.getBooksByAuthor(authorName);
-        return books;
+        return authorRepository.getBooksByAuthor(authorName);
     }
 }

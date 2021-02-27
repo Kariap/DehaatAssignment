@@ -7,9 +7,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
+//This is used to save list of book object in the room database.
 public class Converters {
     @TypeConverter
     public static List<Book> fromString(String value) {

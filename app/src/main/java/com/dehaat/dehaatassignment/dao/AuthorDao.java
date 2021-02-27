@@ -12,6 +12,7 @@ import java.util.List;
 
 @Dao
 public interface AuthorDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertAuthors(List<Author> authors);
 

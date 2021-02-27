@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="rv_authors_width_two_pane">350dp</dimen>
+    <dimen name="text_size_content">20sp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="author_image_width">100dp</dimen>
+    <dimen name="author_image_height">100dp</dimen>
+    <dimen name="text_size_heading">28sp</dimen>
+    <dimen name="btn_width">100dp</dimen>
+    <dimen name="btn_height">30dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="book_image_width">100dp</dimen>
+    <dimen name="book_image_height">150dp</dimen>
 </resources>

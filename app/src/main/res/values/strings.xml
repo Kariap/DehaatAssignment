@@ -4,4 +4,11 @@
     <string name="password">Password</string>
     <string name="dehaat">DeHaat</string>
     <string name="login">Login</string>
+    <string name="collapse">Collapse</string>
+    <string name="read_more">Read more</string>
+    <string name="instruction">Select an author from author list on left side to view books by that author.</string>
+    <string name="read_more">Read more</string>
+    <string name="label_price">Price:</string>
+    <string name="label_publisher">Publisher:</string>
+    <string name="label_published_date">Published Date:</string>
 </resources>

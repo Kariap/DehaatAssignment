@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_16"
+    android:layout_marginTop="@dimen/margin_8"
+    android:layout_marginRight="@dimen/margin_16"
+    android:layout_marginBottom="@dimen/margin_8"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/book_image"
+        android:layout_width="@dimen/book_image_width"
+        android:layout_height="@dimen/book_image_height"
+        android:background="@color/dark_white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_book" />
+
+    <TextView
+        android:id="@+id/book_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="@dimen/text_size_heading"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/book_image"
+        app:layout_constraintTop_toTopOf="@id/book_image"
+        tools:text="The Bullocks" />
+
+    <TextView
+        android:id="@+id/label_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_4"
+        android:text="@string/label_price"
+        android:textSize="@dimen/text_size_content"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/label_publisher"
+        app:layout_constraintLeft_toRightOf="@id/book_image"
+        app:layout_constraintTop_toBottomOf="@id/book_title" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:textSize="@dimen/text_size_content"
+        app:layout_constraintBottom_toBottomOf="@id/label_price"
+        app:layout_constraintLeft_toRightOf="@id/label_price"
+        app:layout_constraintTop_toTopOf="@id/label_price"
+        tools:text="280$" />
+
+    <TextView
+        android:id="@+id/label_publisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_4"
+        android:text="@string/label_publisher"
+        android:textSize="@dimen/text_size_content"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/label_published_date"
+        app:layout_constraintLeft_toRightOf="@id/book_image"
+        app:layout_constraintTop_toBottomOf="@id/label_price" />
+
+    <TextView
+        android:id="@+id/tv_publisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginLeft="@dimen/margin_4"
+        android:textSize="@dimen/text_size_content"
+        app:layout_constraintLeft_toRightOf="@id/label_publisher"
+        app:layout_constraintTop_toBottomOf="@id/label_publisher"
+        app:layout_constraintTop_toTopOf="@id/label_publisher"
+        tools:text="MockAPublisher" />
+
+    <TextView
+        android:id="@+id/label_published_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginLeft="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_4"
+        android:text="@string/label_published_date"
+        android:textSize="@dimen/text_size_content"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/book_image"
+        app:layout_constraintLeft_toRightOf="@id/book_image"
+        app:layout_constraintTop_toBottomOf="@id/label_publisher" />
+
+    <TextView
+        android:id="@+id/tv_published_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_4"
+        android:layout_marginLeft="@dimen/margin_4"
+        android:textSize="@dimen/text_size_content"
+        app:layout_constraintLeft_toRightOf="@id/label_published_date"
+        app:layout_constraintTop_toBottomOf="@id/label_published_date"
+        app:layout_constraintTop_toTopOf="@id/label_published_date"
+        tools:text="28-02-22" />
+
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:fontFamily="sans-serif"
+        android:textSize="@dimen/text_size_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/book_image"
+        tools:text="wegegjjjrgnjnergjergbkergbhi iueribiebr bhbiergibibi ergbbhergbh" />
+
+    <Button
+        android:id="@+id/read_more"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/book_image_height"
+        android:layout_marginTop="@dimen/margin_4"
+        android:background="@color/colorPrimary"
+        android:text="@string/read_more"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,6 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
 
     implementation "com.google.android.material:material:1.2.1"
-    implementation 'com.github.mahimrocky:ShowMoreText:1.0.2'
 
 
 
