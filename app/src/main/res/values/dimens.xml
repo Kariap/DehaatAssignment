@@ -11,7 +11,9 @@
     <dimen name="btn_width">100dp</dimen>
     <dimen name="btn_height">30dp</dimen>
     <dimen name="margin_4">4dp</dimen>
-    <dimen name="margin_16">16dp</dimen>
     <dimen name="book_image_width">100dp</dimen>
     <dimen name="book_image_height">150dp</dimen>
+    <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_32">32dp</dimen>
+    <dimen name="largeText">32sp</dimen>
 </resources>

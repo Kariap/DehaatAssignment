@@ -6,7 +6,6 @@ import com.google.gson.GsonBuilder;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-//TODO:Add caching
 public class AppRestClient {
 
     public static final String BASE_URL = "https://f707b4f7-9eeb-48f9-9782-5e28e188b844.mock.pstmn.io";
